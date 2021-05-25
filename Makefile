@@ -22,6 +22,10 @@ down: ## Stop containers
 contracts: ## Download and migrate contracts
 	./scripts/migrate-contracts.sh
 
+.PHONY: ipfs
+ipfs: ## Download and migrate contracts
+	./scripts/ipfs-upload.sh
+
 .PHONY: logs
 logs: ## Follow container logs
 	$(COMPOSE) logs -f --tail 100
