@@ -21,7 +21,7 @@ ln -f -s ../../.env .env
 
 # Install dependencies
 echo "Installing npm dependencies .."
-npm install &> /dev/null
+npm ci &> /dev/null
 
 # Migrate contracts
 npm run migrate

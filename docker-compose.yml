@@ -16,3 +16,9 @@ services:
       - ipfs:/data/ipfs
       - ./metadata.json:/home/metadata.json
       - ./images:/home/images
+
+  redis:
+    image: redis:6.0.1-alpine
+    container_name: redis
+    ports:
+      - "6379:6379"
