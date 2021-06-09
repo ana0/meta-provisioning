@@ -7,15 +7,15 @@ volumes:
 
 services:
   ipfs:
-    image: ipfs/go-ipfs:v0.4.23
+    image: ipfs/go-ipfs:v0.8.0
     container_name: ipfs
     ports:
       - "5001:5001"
       - "8080:8080"
     volumes:
       - ipfs:/data/ipfs
-      - ./metadata.json:/home/metadata.json
       - ./images:/home/images
+      - ./metadata:/home/metadata
 
   redis:
     image: redis:6.0.1-alpine
