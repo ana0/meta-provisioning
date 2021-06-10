@@ -1,6 +1,7 @@
 node_modules/*
 images
 metadata
+clickmine
 *.txt
 .env
 .tmp

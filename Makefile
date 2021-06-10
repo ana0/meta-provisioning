@@ -16,7 +16,7 @@ up: ## Start containers in background
 
 .PHONY: down
 down: ## Stop containers
-	$(COMPOSE) down -v
+	$(COMPOSE) down
 
 .PHONY: contracts
 contracts: ## Download and migrate contracts
