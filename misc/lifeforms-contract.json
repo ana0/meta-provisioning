@@ -1,0 +1,8 @@
+{
+  "name": "Lifeforms",
+  "description": "Lifeforms are NFT-based entities created by Sarah Friend. Like any living thing, lifeforms need regular care in order to thrive. If not properly looked after, lifeforms die. A lifeform that has died will no longer appear in wallets, is not transferable, and cannot be brought back to life in any way. How do you care for a lifeform? Within 90 days of receiving it, you must give it away.",
+  "image": "https://isthisa.computer/api/static/images/red.jpg",
+  "external_link": "https://lifeforms.supply",
+  "seller_fee_basis_points": 1000, 
+  "fee_recipient": "0xb6a074dB9c5492bF2f54c8316EB12805Fd0D30D9"
+}

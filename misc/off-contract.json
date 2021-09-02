@@ -1,0 +1,8 @@
+{
+  "name": "Off",
+  "description": "Off is an artist edition, artwork, and multiplayer game by Sarah Friend. Each image corresponds to the exact pixel dimensions of a large collection of computer monitors, smart phones, and tablets. Each piece in the edition has two parts: a public image, and a secret image. Within each secret image is hidden two things: an encrypted sentence and a shard of the private key that was used to encrypt it. Across the full edition of 255 images, an entire essay and the entire private key are hidden. A majority of the private key shards (2/3) are required to decrypt any of the text, therefore the essay can only be read if a majority of collectors collaborate to share their images. Think of this as a multiplayer game that will be played by the collectors of this artist edition, or perhaps, a massively multiplayer prisoner's dilemma.",
+  "image": "https://isthisa.computer/ipfs/QmRimVaszgXDxrStuQfECFKjp2WoAG84skchuJHgReDVsb/off.png",
+  "external_link": "https://off.supply",
+  "seller_fee_basis_points": 1000,
+  "fee_recipient": "0xb6a074dB9c5492bF2f54c8316EB12805Fd0D30D9"
+}

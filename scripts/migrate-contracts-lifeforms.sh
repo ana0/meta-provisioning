@@ -2,8 +2,8 @@
 
 source "scripts/common.sh"
 
-REPOSITORY=https://github.com/ana0/off-contracts.git
-FOLDER_NAME=contracts
+REPOSITORY=https://github.com/ana0/lifeforms-contracts.git
+FOLDER_NAME=lifeforms-contracts
 
 check_tmp_folder $REPOSITORY $FOLDER_NAME
 

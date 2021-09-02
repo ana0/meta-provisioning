@@ -18,9 +18,13 @@ up: ## Start containers in background
 down: ## Stop containers
 	$(COMPOSE) down
 
-.PHONY: contracts
-contracts: ## Download and migrate contracts
-	./scripts/migrate-contracts.sh
+.PHONY: contracts-off
+contracts-off: ## Download and migrate contracts
+	./scripts/migrate-contracts-off.sh
+
+.PHONY: contracts-lifeforms
+contracts-lifeforms: ## Download and migrate contracts
+	./scripts/migrate-contracts-lifeforms.sh
 
 .PHONY: ipfs
 ipfs: ## Download and migrate contracts
