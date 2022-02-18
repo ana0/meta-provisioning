@@ -6,7 +6,7 @@ services:
       context: .
       dockerfile: api/Dockerfile
       args:
-        - GIT_COMMIT=ff41566
+        - GIT_COMMIT=e37ef57
     container_name: api
     depends_on:
       - db
@@ -19,7 +19,7 @@ services:
       context: .
       dockerfile: worker/Dockerfile
       args:
-        - GIT_COMMIT=ff41566
+        - GIT_COMMIT=e37ef57
     container_name: worker
     depends_on: 
       - db
