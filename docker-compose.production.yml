@@ -8,6 +8,8 @@ services:
       args:
         - GIT_COMMIT=e37ef57
     container_name: api
+    ports:
+      - "8088:8088"
     depends_on:
       - db
       - redis
