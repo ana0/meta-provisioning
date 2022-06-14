@@ -26,6 +26,10 @@ contracts-off: ## Download and migrate contracts
 contracts-lifeforms: ## Download and migrate contracts
 	./scripts/migrate-contracts-lifeforms.sh
 
+.PHONY: contracts-wildcards
+contracts-wildcards: ## Download and migrate contracts
+	./scripts/migrate-contracts-wildcards.sh
+
 .PHONY: ipfs
 ipfs: ## Download and migrate contracts
 	./scripts/ipfs-upload.sh
