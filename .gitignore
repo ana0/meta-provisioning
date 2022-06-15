@@ -7,3 +7,4 @@ clickmine
 .env
 .tmp
 metadata.json
+*.csv

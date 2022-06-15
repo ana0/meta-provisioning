@@ -15,6 +15,9 @@ services:
       - redis
     env_file:
       - .env
+    volumes:
+      - ./card-metadata.csv:/home/card-metadata.csv
+      - ./mintcodes.csv:/home/mintcodes.csv
 
   worker:
     build:
