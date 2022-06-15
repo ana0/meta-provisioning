@@ -6,7 +6,7 @@ services:
       context: .
       dockerfile: api/Dockerfile
       args:
-        - GIT_COMMIT=e37ef57
+        - GIT_COMMIT=07d7b54
     container_name: api
     ports:
       - "8088:8088"
@@ -24,7 +24,7 @@ services:
       context: .
       dockerfile: worker/Dockerfile
       args:
-        - GIT_COMMIT=e37ef57
+        - GIT_COMMIT=07d7b54
     container_name: worker
     depends_on: 
       - db
