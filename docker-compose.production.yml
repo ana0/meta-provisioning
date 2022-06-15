@@ -16,8 +16,8 @@ services:
     env_file:
       - .env
     volumes:
-      - ./card-metadata.csv:/home/card-metadata.csv
-      - ./mintcodes.csv:/home/mintcodes.csv
+      - ./card-metadata.csv:/usr/src/app/card-metadata.csv
+      - ./mintcodes.csv:/usr/src/app/mintcodes.csv
 
   worker:
     build:
