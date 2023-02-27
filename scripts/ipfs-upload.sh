@@ -24,6 +24,8 @@ docker exec ipfs ipfs add -w /home/misc/clickmine-contract.json
 
 docker exec ipfs ipfs add -w /home/misc/wildcards-contract.json
 
+docker exec ipfs ipfs add -w /home/misc/touching-grass-animation.mp4
+
 FILES=./clickmine/*
 for f in $FILES
 do
