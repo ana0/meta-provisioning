@@ -28,6 +28,10 @@ docker exec ipfs ipfs add -w /home/misc/touching-grass-animation.mp4
 
 docker exec ipfs ipfs add -w /home/misc/touching-grass.jpg
 
+docker exec ipfs ipfs add -w /home/misc/grid.mp4
+
+docker exec ipfs ipfs add -w /home/misc/grid.png
+
 FILES=./clickmine/*
 for f in $FILES
 do
