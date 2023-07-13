@@ -34,6 +34,8 @@ docker exec ipfs ipfs add -w /home/misc/grid-HD.mp4
 
 docker exec ipfs ipfs add -w /home/misc/grid.png
 
+docker exec ipfs ipfs add -w /home/misc/mirror-piece-square.jpg
+
 FILES=./clickmine/*
 for f in $FILES
 do
