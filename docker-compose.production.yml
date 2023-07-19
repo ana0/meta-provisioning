@@ -18,6 +18,7 @@ services:
     volumes:
       - ./card-metadata.csv:/usr/src/app/card-metadata.csv
       - ./mintcodes.csv:/usr/src/app/mintcodes.csv
+      - uploads:/usr/src/app/uploads
 
   worker:
     build:
@@ -31,3 +32,5 @@ services:
       - redis
     env_file:
       - .env
+    volumes:
+      - uploads:/usr/src/app/uploads
