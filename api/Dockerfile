@@ -9,7 +9,7 @@ RUN seq 1 8 | xargs -I{} mkdir -p /usr/share/man/man{}
 
 # Install dependencies
 RUN apt-get update \
-      && apt-get install -y git python build-essential postgresql-client
+      && apt-get install -y git python3 build-essential postgresql-client
 
 # Install and build culturestake app
 RUN git clone https://github.com/ana0/meta-server.git app \
