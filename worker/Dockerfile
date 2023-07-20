@@ -1,12 +1,8 @@
-FROM node:12-slim
+FROM node:18-slim
 
 ARG GIT_COMMIT
 
 WORKDIR /usr/src
-
-# Specify the correct Debian repositories
-RUN printf "deb http://archive.debian.org/debian/ stretch main\n\
-deb-src http://archive.debian.org/debian/ stretch main\n" > /etc/apt/sources.li$
 
 # Create man folders which are required by postgres
 RUN seq 1 8 | xargs -I{} mkdir -p /usr/share/man/man{}
