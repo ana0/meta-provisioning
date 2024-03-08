@@ -19,7 +19,7 @@ RUN git clone https://github.com/ana0/meta-server.git app \
 WORKDIR /usr/src/app
 
 # Prepare variables
-COPY .env .
+# COPY .env .
 
 RUN rm package-lock.json
 

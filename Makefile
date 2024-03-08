@@ -2,7 +2,7 @@ PROJECT ?= meta-server
 ENV ?= development
 
 # Common docker-compose method and arguments
-COMPOSE = docker-compose -f docker-compose.yml -f docker-compose.$(ENV).yml -p ${PROJECT}
+COMPOSE = docker compose -f docker-compose.yml -f docker-compose.$(ENV).yml -p ${PROJECT}
 
 # Tasks
 
@@ -29,6 +29,10 @@ contracts-lifeforms: ## Download and migrate contracts
 .PHONY: contracts-wildcards
 contracts-wildcards: ## Download and migrate contracts
 	./scripts/migrate-contracts-wildcards.sh
+
+.PHONY: contracts-mirrors
+contracts-mirrors: ## Download and migrate contracts
+	./scripts/migrate-contracts-mirrors.sh
 
 .PHONY: ipfs
 ipfs: ## Download and migrate contracts
