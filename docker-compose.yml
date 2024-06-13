@@ -40,6 +40,8 @@ services:
     build:
       context: .
       dockerfile: temp-workshop/Dockerfile
+      args:
+        - GIT_COMMIT=d299672
     container_name: workshop
     ports:
       - "8040:8040"

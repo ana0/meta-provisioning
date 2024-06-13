@@ -11,7 +11,8 @@ RUN apt-get update \
 
 # Install and build culturestake app
 RUN git clone https://github.com/ana0/workshop-dao-app.git app \
-      && cd app/backend 
+   && cd app \
+   && git checkout --quiet ${GIT_COMMIT}
 
 WORKDIR /usr/src/app/backend
 
