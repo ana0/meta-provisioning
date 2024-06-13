@@ -23,8 +23,10 @@ WORKDIR /usr/src/app
 
 RUN rm package-lock.json
 
-RUN npm i \
-      && npm run build
+RUN npm update -g npm
+
+RUN npm ci --verbose \
+       && npm run build
 
 # Remove unneeded dependencies
 RUN apt-get purge -y --auto-remove build-essential
