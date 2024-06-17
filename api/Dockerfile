@@ -21,7 +21,7 @@ WORKDIR /usr/src/app
 # Prepare variables
 # COPY .env .
 
-RUN rm package-lock.json
+#RUN rm package-lock.json
 
 RUN npm update -g npm
 
