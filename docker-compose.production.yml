@@ -9,7 +9,7 @@ services:
       context: .
       dockerfile: api/Dockerfile
       args:
-        - GIT_COMMIT=8ebee14
+        - GIT_COMMIT=d8c6a84
     container_name: api
     ports:
       - "8088:8088"
@@ -22,6 +22,9 @@ services:
       - ./card-metadata.csv:/usr/src/app/card-metadata.csv
       - ./mintcodes.csv:/usr/src/app/mintcodes.csv
       - ./mirrorcodes.csv:/usr/src/app/mirrorcodes.csv
+      - ./memoryforms.csv:/usr/src/app/memoryforms.csv
+      - ./lifeforms.csv:/usr/src/app/lifeforms.csv
+      - ./memoryforms2lifeforms.csv:/usr/src/app/memoryforms2lifeforms.csv
       - uploads:/usr/src/app/uploads
 
   worker:

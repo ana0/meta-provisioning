@@ -11,7 +11,7 @@ RUN seq 1 8 | xargs -I{} mkdir -p /usr/share/man/man{}
 RUN apt-get update \
       && apt-get install -y git python3 build-essential postgresql-client
 
-# Install and build culturestake app
+# Install and build app
 RUN git clone https://github.com/ana0/meta-server.git app \
       && cd app \
       && git checkout --quiet ${GIT_COMMIT}
