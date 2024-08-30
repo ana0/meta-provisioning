@@ -26,6 +26,10 @@ services:
       - ./lifeforms.csv:/usr/src/app/lifeforms.csv
       - ./memoryforms2lifeforms.csv:/usr/src/app/memoryforms2lifeforms.csv
       - uploads:/usr/src/app/uploads
+  
+  ipfs:
+    ports:
+      - "4001:4001"
 
   worker:
     build:
