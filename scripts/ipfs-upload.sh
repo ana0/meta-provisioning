@@ -4,6 +4,8 @@ docker exec ipfs ipfs add --recursive /home/images
 
 docker exec ipfs ipfs add --recursive /home/metadata
 
+docker exec ipfs ipfs add --recursive /home/promptbaby
+
 docker exec ipfs ipfs add -w /home/misc/off-contract.json
 
 docker exec ipfs ipfs add -w /home/misc/off.png
@@ -41,3 +43,4 @@ for f in $FILES
 do
   docker exec ipfs ipfs add -w /home/"$(printf %q "$f")"
 done
+
