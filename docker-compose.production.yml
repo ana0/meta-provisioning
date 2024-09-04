@@ -36,7 +36,7 @@ services:
       context: .
       dockerfile: worker/Dockerfile
       args:
-        - GIT_COMMIT=8ebee14
+        - GIT_COMMIT=6d2cd52
     container_name: worker
     depends_on: 
       - db
