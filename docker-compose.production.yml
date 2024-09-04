@@ -9,7 +9,7 @@ services:
       context: .
       dockerfile: api/Dockerfile
       args:
-        - GIT_COMMIT=3eb1985
+        - GIT_COMMIT=8388c67
     container_name: api
     ports:
       - "8088:8088"
