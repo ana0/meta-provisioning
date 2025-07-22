@@ -24,7 +24,7 @@ services:
     ports:
       - "1337:1337"
     env_file:
-      - .env
+      - .nightscout.env
     environment:
       ### Variables for the container
       NODE_ENV: production
