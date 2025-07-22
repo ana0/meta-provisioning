@@ -18,6 +18,14 @@ up: ## Start containers in background
 down: ## Stop containers
 	$(COMPOSE) down
 
+.PHONY: nightscout-up
+nightscout-up: ## Stop containers
+	docker compose -f docker-compose.nightscout.yml up
+
+.PHONY: nightscout-down
+nightscout-down: ## Stop containers
+	docker compose -f docker-compose.nightscout.yml down
+
 .PHONY: contracts-off
 contracts-off: ## Download and migrate contracts
 	./scripts/migrate-contracts-off.sh
