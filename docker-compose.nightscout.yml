@@ -27,6 +27,7 @@ services:
       ### Variables for the container
       NODE_ENV: production
       TZ: Europe/Berlin
+      INSECURE_USE_HTTP: true
 
       # For all other settings, please refer to the Environment section of the README
       ### Required variables
