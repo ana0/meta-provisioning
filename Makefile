@@ -20,7 +20,7 @@ down: ## Stop containers
 
 .PHONY: nightscout-up
 nightscout-up: ## Stop containers
-	docker compose -f docker-compose.nightscout.yml up
+	docker compose -f docker-compose.nightscout.yml up -d
 
 .PHONY: nightscout-down
 nightscout-down: ## Stop containers
