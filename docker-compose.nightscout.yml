@@ -23,6 +23,8 @@ services:
     logging: *default-logging
     ports:
       - "1337:1337"
+    env_file:
+      - .env
     environment:
       ### Variables for the container
       NODE_ENV: production
