@@ -32,4 +32,9 @@ services:
       MONGO_CONNECTION: mongodb://mongo:27017/nightscout
       DISPLAY_UNITS: mmol/L
       TIME_FORMAT: 24
-      ENABLE: careportal rawbg iob
+      ENABLE: careportal boluscalc food bwp cage sage iage iob cob basal dbsize pushover pump openaps
+      DEVICESTATUS_ADVANCED: true
+      SHOW_FORECAST: openaps
+      PUMP_FIELDS: reservoir battery clock
+      SHOW_PLUGINS: careportal boluscalc food bwp cage sage iage iob cob basal dbsize pushover pump openaps
+
