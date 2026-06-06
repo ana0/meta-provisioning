@@ -8,21 +8,28 @@ volumes:
 
 services:
   ipfs:
-    image: ipfs/go-ipfs:v0.8.0
-    container_name: ipfs
-    ports:
-      - "8080:8080"
-    volumes:
-      - ipfs:/data/ipfs
-      - ./images:/home/images
-      - ./metadata:/home/metadata
-      - ./clickmine:/home/clickmine
-      - ./misc:/home/misc
-      - ./promptbaby:/home/promptbaby
+      image: ipfs/kubo:v0.41.0   
+      container_name: ipfs
+      # --enable-gc makes the daemon enforce Datastore.StorageMax via background gc.
+      # --migrate=true auto-runs repo migrations on version bumps.
+      command: daemon --migrate=true --enable-gc
+      restart: unless-stopped
+      ports:
+        - "8080:8080"
+      volumes:
+        - ipfs:/data/ipfs
+        - ./ipfs/init.d:/container-init.d:ro
+        - ./images:/home/images
+        - ./metadata:/home/metadata
+        - ./clickmine:/home/clickmine
+        - ./misc:/home/misc
+        - ./promptbaby:/home/promptbaby
+
 
   redis:
     image: redis:6.0.1-alpine
     container_name: redis
+    restart: unless-stopped
     command: 
       --requirepass ${REDIS_PASSWORD}
     env_file:
@@ -31,6 +38,7 @@ services:
   db:
     image: postgres:12.2-alpine
     container_name: db
+    restart: unless-stopped
     env_file:
       - .env
     volumes:
