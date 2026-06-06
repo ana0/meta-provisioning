@@ -9,3 +9,4 @@ clickmine
 .tmp
 metadata.json
 *.csv
+*.env
