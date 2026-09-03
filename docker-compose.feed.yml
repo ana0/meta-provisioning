@@ -1,0 +1,77 @@
+# FEED — Sarah Friend, for the Rhizome 30th anniversary exhibition.
+#
+# Standalone, like nightscout: it shares nothing with meta-server — no db, no
+# redis, no ipfs — so `make down` for a contract migration must not take the
+# artwork offline with it.
+#
+# Source is pulled and pinned the way api and worker are, but by build context
+# rather than a git clone inside a Dockerfile. Docker fetches the repo at the
+# given ref and builds the Dockerfile the artwork already carries, so there is
+# no second Dockerfile here to drift out of step with the one the collector
+# gets. Bump the ref below to deploy a new version, exactly as you bump
+# GIT_COMMIT for api.
+#
+# Note what is deliberately absent: env_file. Every other service here reads
+# .env, which holds GRAVEDIGGER_PRIV_KEY and the Postgres credentials. This
+# container renders arbitrary pages off the open internet with Chromium's
+# sandbox disabled, and it has no business holding a signing key.
+
+x-logging: &default-logging
+  driver: json-file
+  options:
+    max-size: '10m'
+    max-file: '5'
+
+services:
+  feedme:
+    build:
+      # Pin this to a commit once the Dockerfile is pushed — `main` is here so
+      # the first deploy works, not because a moving ref is what you want.
+      context: https://github.com/ana0/rhizome-game.git#main
+      dockerfile: Dockerfile
+    image: feed:latest
+    container_name: feed
+    restart: unless-stopped
+    logging: *default-logging
+
+    # Loopback only; nginx on the host is the way in.
+    ports:
+      - "127.0.0.1:4444:4444"
+
+    environment:
+      HOST: "0.0.0.0"
+      PORT: "4444"
+      # Deployment policy, not artwork. All four are unset in the collector's
+      # copy, and unset means the behaviour the piece has always had: no
+      # limits, one player, no proxy. Captures are serial and take up to ~30s,
+      # so a depth of 3 is one running plus two waiting.
+      FEEDME_MAX_QUEUE: "3"
+      FEEDME_RATE_LIMIT: "8"
+      FEEDME_RATE_WINDOW: "60000"
+      # nginx sets X-Real-IP. Without this the limiter sees only the proxy and
+      # rations every player as though they were one person.
+      FEEDME_TRUST_PROXY: "1"
+
+    # Chromium's sandbox needs unprivileged user namespaces, which this
+    # container does not get, so it runs with --no-sandbox and the container
+    # becomes the boundary. Everything below IS that boundary. Kept in step
+    # with rhizome-game/docker-compose.yml, which is the source of truth for
+    # what Chromium needs here.
+    read_only: true
+    tmpfs:
+      - /tmp:size=512m,mode=1777
+      - /home/feed:size=64m
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    shm_size: "512mb"
+    mem_limit: 2g
+    pids_limit: 512
+
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:4444/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 30s
+      timeout: 40s
+      start_period: 90s
+      retries: 3
