@@ -25,9 +25,7 @@ x-logging: &default-logging
 services:
   feedme:
     build:
-      # Pin this to a commit once the Dockerfile is pushed — `main` is here so
-      # the first deploy works, not because a moving ref is what you want.
-      context: https://github.com/ana0/rhizome-game.git#main
+      context: https://github.com/ana0/rhizome-game.git#2bfb65c11ef122157c7bbdaf97f4b874122df789
       dockerfile: Dockerfile
     image: feed:latest
     container_name: feed
