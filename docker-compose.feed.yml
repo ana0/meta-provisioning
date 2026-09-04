@@ -39,6 +39,12 @@ services:
     environment:
       HOST: "0.0.0.0"
       PORT: "4444"
+      # Chromium wants $HOME writable the moment it starts, and a read-only
+      # rootfs leaves only the tmpfs. /tmp is 1777 by the kernel's default for
+      # tmpfs; a tmpfs over /home is not, because Docker takes the mode from
+      # the image directory underneath. The image sets this too — belt to that
+      # braces, and it means this works without waiting on a rebuild.
+      HOME: "/tmp"
       # Deployment policy, not artwork. All four are unset in the collector's
       # copy, and unset means the behaviour the piece has always had: no
       # limits, one player, no proxy. Captures are serial and take up to ~30s,
@@ -58,9 +64,6 @@ services:
     read_only: true
     tmpfs:
       - /tmp:size=512m,mode=1777
-      # mode matters: a tmpfs over $HOME is root-owned without it, and
-      # Chromium writes there (crashpad, ~/.pki) the first time it renders.
-      - /home/feed:size=64m,mode=1777
     security_opt:
       - no-new-privileges:true
     cap_drop:
