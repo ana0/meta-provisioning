@@ -26,27 +26,27 @@ nightscout-up: ## Stop containers
 nightscout-down: ## Stop containers
 	docker compose -f docker-compose.nightscout.yml down
 
-# FEED ME — the Rhizome auction piece. Its own stack, like nightscout: it
-# shares nothing with meta-server, so `make down` must not take it offline.
-# Source is pulled from git at the ref pinned in docker-compose.feedme.yml —
-# nothing needs to be checked out on this box.
-FEEDME = docker compose -f docker-compose.feedme.yml -p feedme
+# FEED — the Rhizome auction piece. Its own stack, like nightscout: it shares
+# nothing with meta-server, so `make down` must not take it offline. Source is
+# pulled from git at the ref pinned in docker-compose.feed.yml — nothing needs
+# to be checked out on this box.
+FEED = docker compose -f docker-compose.feed.yml -p feed
 
 .PHONY: feed-build
 feed-build: ## Build FEED from the pinned ref
-	$(FEEDME) build --pull
+	$(FEED) build --pull
 
 .PHONY: feed-up
 feed-up: ## Start FEED
-	$(FEEDME) up -d
+	$(FEED) up -d
 
 .PHONY: feed-down
 feed-down: ## Stop FEED
-	$(FEEDME) down
+	$(FEED) down
 
 .PHONY: feed-logs
 feed-logs: ## Follow FEED logs
-	$(FEEDME) logs -f --tail 100
+	$(FEED) logs -f --tail 100
 
 .PHONY: contracts-off
 contracts-off: ## Download and migrate contracts

@@ -60,7 +60,9 @@ services:
     read_only: true
     tmpfs:
       - /tmp:size=512m,mode=1777
-      - /home/feed:size=64m
+      # mode matters: a tmpfs over $HOME is root-owned without it, and
+      # Chromium writes there (crashpad, ~/.pki) the first time it renders.
+      - /home/feed:size=64m,mode=1777
     security_opt:
       - no-new-privileges:true
     cap_drop:
