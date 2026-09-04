@@ -25,7 +25,7 @@ x-logging: &default-logging
 services:
   feedme:
     build:
-      context: https://github.com/ana0/rhizome-game.git#2bfb65c11ef122157c7bbdaf97f4b874122df789
+      context: https://github.com/ana0/rhizome-game.git#42150434a163b19e57d0d251b27befd2baa8a4cf
       dockerfile: Dockerfile
     image: feed:latest
     container_name: feed
