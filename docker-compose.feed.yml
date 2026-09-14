@@ -25,10 +25,11 @@ x-logging: &default-logging
 services:
   feedme:
     build:
-      context: https://github.com/ana0/rhizome-game.git#232557c0790f343f68fd5ba25bc813a9c4a8bd90
+      context: https://github.com/ana0/rhizome-game.git#2d24cdf841e6727f5948c214d3237c57b674f4be
       dockerfile: Dockerfile
     image: feed:latest
     container_name: feed
+    pids_limit: 2048 
     restart: unless-stopped
     logging: *default-logging
 
