@@ -29,7 +29,7 @@ services:
       dockerfile: Dockerfile
     image: feed:latest
     container_name: feed
-    pids_limit: 2048 
+    
     restart: unless-stopped
     logging: *default-logging
 
@@ -71,7 +71,7 @@ services:
       - ALL
     shm_size: "512mb"
     mem_limit: 2g
-    pids_limit: 512
+    pids_limit: 2048 
 
     healthcheck:
       test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:4444/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
